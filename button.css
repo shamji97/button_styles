@@ -1,0 +1,103 @@
+/*
+  https://developer.mozilla.org/en/docs/Web/CSS/box-shadow
+  box-shadow: [inset?] [top] [left] [blur] [size] [color];
+
+  Tips:
+    - We're setting all the blurs to 0 since we want a solid fill.
+    - Add the inset keyword so the box-shadow is on the inside of the element
+    - Animating the inset shadow on hover looks like the element is filling in from whatever side you specify ([top] and [left] accept negative values to become [bottom] and [right])
+    - Multiple shadows can be stacked
+    - If you're animating multiple shadows, be sure to keep the same number of shadows so the animation is smooth. Otherwise, you'll get something choppy.
+*/
+
+/* // Animate the size, inside */
+.fill:hover,
+.fill:focus {
+  color: #ef6eae;
+
+  box-shadow: inset 0 0 0 2em #f6afd2;
+  border-color: #f6afd2;
+}
+
+/* // Animate the size, outside */
+.pulse:hover,
+.pulse:focus {
+  color: #ff7f82;
+  animation: pulse 1s;
+  box-shadow: 0 0 0 2em rgba(#fff, 0);
+  border-color: #feb8ba;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 #feb8ba;
+  }
+}
+
+/* // Stack multiple shadows, one from the left, the other from the right */
+.close:hover,
+.close:focus {
+  color: #ffa260;
+  box-shadow: inset -3.5em 0 0 0 #ffcba7, inset 3.5em 0 0 0 #ffcba7;
+  border-color: #ffcba7;
+}
+
+/* // Size can also be negative; see how it's smaller than the element */
+.raise:hover,
+.raise:focus {
+  color: #ffa260;
+  box-shadow: 0 0.5em 0.5em -0.4em #ffcba7;
+  transform: translateY(-0.25em);
+  border-color: #ffcba7;
+}
+
+/* // Animating from the bottom */
+.up:hover,
+.up:focus {
+  color: #e4cb58;
+  box-shadow: inset 0 -3.25em 0 0 #f0e2a3;
+  border-color: #f0e2a3;
+}
+
+/* // And from the left */
+.slide:hover,
+.slide:focus {
+  color: #8fc866;
+  box-shadow: inset 6.5em 0 0 0 #c1e0aa;
+  border-color: #c1e0aa;
+}
+
+/* Rainbow - Background */
+.rainbow-bg:hover,
+.rainbow-bg:focus {
+  background-image: linear-gradient(
+    to right,
+    red,
+    orange,
+    yellow,
+    green,
+    blue,
+    indigo,
+    violet,
+    red
+  );
+}
+
+
+
+/* // Basic button styles */
+button {
+  background: none;
+  border: 2px solid;
+  transition: 0.25s;
+  font: inherit;
+  line-height: 1;
+  margin: 0.5em;
+  padding: 1em 2em;
+  cursor: pointer;
+}
+/* Footer button */
+footer button{
+  right:10px;
+  margin: 0 15px;padding: 0 15px;
+}
